@@ -1,19 +1,19 @@
 require 'formula'
 
-class DevteamPackagecufflinks211 < Formula
+class DevteamPackagecufflinks221 < Formula
   version "1.0"
-  # Recipe auto-generate from repository https://toolshed.g2.bx.psu.edu/devteam/package_cufflinks_2_1_1
+  # Recipe auto-generate from repository https://toolshed.g2.bx.psu.edu/devteam/package_cufflinks_2_2_1
   
   option "without-architecture", "Build without allowing architecture information (to force source install when binaries are available)."
   
   if OS.linux? and Hardware.is_64_bit? and !build.without?("architecture")
-    url "http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.1.1.Linux_x86_64.tar.gz"
+    url "http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz"
     sha1 ""
   elsif OS.mac? and Hardware.is_64_bit? and !build.without?("architecture")
-    url "http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.1.1.OSX_x86_64.tar.gz"
+    url "http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.OSX_x86_64.tar.gz"
     sha1 ""
   else
-    url "http://cufflinks.cbcb.umd.edu/downloads/cufflinks-2.1.1.tar.gz"
+    url "http://cufflinks.cbcb.umd.edu/downloads/cufflinks-2.2.1.tar.gz"
     sha1 ""
   end
   

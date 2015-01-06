@@ -15,15 +15,12 @@ class IucPackageqt48 < Formula
   url "http://download.qt-project.org/official_releases/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz"
   sha1 ""
   
-  depends_on "jmchilton/toolshed/devteam_packagelibx11150"
-  depends_on "jmchilton/toolshed/devteam_packagelibxextproto721"
   def install
-    # Skipping set_environment_for_install command, handled by platform brew.
-    system "./configure -prefix #{prefix} -opensource -confirm-license -no-xinerama -no-xinput -no-xcursor -no-xvideo -no-opengl -no-sm -no-xkb -no-gui -no-cups -no-openvg -no-xrandr -no-xrender" 
-    system "make sub-src" 
-    system "make install" 
+    system "./configure -prefix #{prefix} -opensource -confirm-license -no-xinerama -no-xinput -no-xcursor -no-xvideo -no-opengl -no-sm -no-xkb -no-gui -no-cups -no-openvg -no-xrandr -no-xrender -nomake examples -nomake demos" 
+    system "./bin/qmake -r QT_BUILD_PARTS=\"libs tools\"" 
+    system "make install"
     # Tool Shed set environment variable that is picked implicitly.
-    environment([{'action'=> 'append', 'variable'=> 'LD_LIBRARY_PATH', 'value'=> '$KEG_ROOT/lib'},{'action'=> 'set', 'variable'=> 'QT_ROOT_DIR', 'value'=> '$KEG_ROOT'},{'action'=> 'prepend', 'variable'=> 'LD_LIBRARY_PATH', 'value'=> '$KEG_ROOT/lib/'}])
+    environment([{'action'=> 'set', 'variable'=> 'QT_ROOT_DIR', 'value'=> '$KEG_ROOT'},{'action'=> 'prepend', 'variable'=> 'LD_LIBRARY_PATH', 'value'=> '$KEG_ROOT/lib/'},{'action'=> 'prepend', 'variable'=> 'CPLUS_INCLUDE_PATH', 'value'=> '$KEG_ROOT/include'},{'action'=> 'prepend', 'variable'=> 'C_INCLUDE_PATH', 'value'=> '$KEG_ROOT/include'},{'action'=> 'prepend', 'variable'=> 'PKG_CONFIG_PATH', 'value'=> '$KEG_ROOT/lib/pkgconfig'}])
   end
   
   def environment(actions)

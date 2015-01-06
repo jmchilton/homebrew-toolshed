@@ -6,7 +6,7 @@ class MillerlabPackagequicktree11 < Formula
   
   option "without-architecture", "Build without allowing architecture information (to force source install when binaries are available)."
   
-  url "ftp://ftp.sanger.ac.uk/pub4/resources/software/quicktree/quicktree.tar.gz"
+  url "ftp://ftp.sanger.ac.uk/pub/resources/software/quicktree/quicktree.tar.gz"
   sha1 ""
   
   def install

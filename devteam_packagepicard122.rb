@@ -1,21 +1,22 @@
 require 'formula'
 require 'json'
 
-class DevteamPackagegalaxyops100 < Formula
+class DevteamPackagepicard122 < Formula
   version "1.0"
-  # Recipe auto-generate from repository https://toolshed.g2.bx.psu.edu/devteam/package_galaxy_ops_1_0_0
+  # Recipe auto-generate from repository https://toolshed.g2.bx.psu.edu/devteam/package_picard_122
   # Tool Shed Readme:
   #    
+  #    This picard package dependency is retrieved directly from https://github.com/broadinstitute/picard/releases
   #            
   
   option "without-architecture", "Build without allowing architecture information (to force source install when binaries are available)."
   
-  # Each homebrew formula must have at least one download, tool shed doesn't require this so hacking in hello source download.
-  url "http://ftpmirror.gnu.org/hello/hello-2.9.tar.gz"
-  sha1 "cb0470b0e8f4f7768338f5c5cfe1688c90fbbc74"
+  url "https://github.com/broadinstitute/picard/releases/download/1.122/picard-tools-1.122.zip"
+  sha1 ""
   
   def install
-    environment([{'action'=> 'prepend', 'variable'=> 'GOPS_ROOT_PATH', 'value'=> '$KEG_ROOT'}])
+    prefix.install Dir["./*"]
+    environment([{'action'=> 'set', 'variable'=> 'JAVA_JAR_PATH', 'value'=> '$KEG_ROOT'}])
   end
   
   def environment(actions)

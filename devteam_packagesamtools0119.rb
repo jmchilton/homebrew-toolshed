@@ -62,6 +62,8 @@ class DevteamPackagesamtools0119 < Formula
       system "sed -i.bak 's/-lcurses/-lncurses/' Makefile" 
       system "make" 
       bin.install "samtools"
+      bin.install "bcftools/bcftools"
+      bin.install "bcftools/vcfutils.pl"
       system "mkdir", "-p", "#{prefix}/lib"
       mv "libbam.a", "#{prefix}/lib"
       system "mkdir", "-p", "#{prefix}/include/bam"
